@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="icon" href="../static/img/logo/logo.png" />
+    <title>Détails de l'articles | StreetShop</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="/">Accueil</a>
+        <a href="/add">Ajouter un produit</a>
+        <img src="../static/img/logo/logo.png" alt="logo">
+    </div>
+
+    <div class="product-item">
+        <img src="{{.Image}}" alt="{{.Name}}">
+        <div class="product-name">{{.Name}}</div>
+        <p>{{.Description}}</p>
+        {{if .Discount}}
+        <div class="product-price discounted">{{.Price}} €</div>
+        <div class="product-discount">{{printf "%.2f" (mult .Price 0.8)}} €</div>
+        {{else}}
+        <div class="product-price">{{.Price}} €</div>
+        {{end}}
+        {{if eq .Stock 0}}
+        <div class="out-of-stock">Hors stock</div>
+        {{else}}
+        <p>Stock: {{.Stock}}</p>
+        {{end}}
+    </div>
+    <div class="product-info">
+        <p>{{.Detail}}</p>
+        <div class="cart">
+            <a href="/non">Ajouter au Panier</a>
+        </div>
+    </div>
+</body>
+
+</html>

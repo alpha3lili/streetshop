@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="icon" href="../static/img/logo/logo.png" />
+    <title>Ajouter des articles | StreetShop</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="/">Accueil</a>
+        <a href="/add">Ajouter un produit</a>
+        <img src="../static/img/logo/logo.png" alt="logo">
+    </div>
+
+    <h1 class="new-product">Ajouter un nouveau produit</h1>
+    <div class="add-product">
+        <form action="/add" method="post">
+            <label>Nom du produit:</label><input type="text" name="name" required /><br />
+            <label>Prix:</label><input type="text" name="price" required /><br />
+            <label>Description:</label><textarea name="description"></textarea><br />
+            <label>Detail :</label><textarea name="detail"></textarea><br />
+            <label>Stock:</label><input type="text" name="stock" required /><br />
+            <label>Réduction:</label><input type="checkbox" name="discount" /><br />
+            <label for="image">Choisir une Image</label><br>
+            <select id="image" name="image" required>
+                {{range .}}
+                <option value="{{.}}">{{.}}</option>
+                {{end}}
+            </select><br><br>
+            <input type="submit" value="Ajouter" />
+        </form>
+        <a href="/">Retour à la liste</a>
+    </div>
+</body>
+
+</html>
